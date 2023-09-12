@@ -5,14 +5,13 @@ export const baseUrl = "http://localhost:3000";
 export const Requests = {
   // should return a promise with all dogs in the database
   getAllDogs: () => {
-    fetch(`${baseUrl}/dogs`)
-      .then((data) => data.json())
-      .then(console.log);
+    return fetch(`${baseUrl}/dogs`)
+      .then((data) => data.json());
   },
   // should create a dog in the database from a partial dog object
   // and return a promise with the result
   postDog: ({ name, image, description, isFavorite }: Dog) => {
-    fetch(`${baseUrl}/dogs`, {
+    return fetch(`${baseUrl}/dogs`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -25,7 +24,7 @@ export const Requests = {
 
   // should delete a dog from the database
   deleteDog: (id: number) => {
-    fetch(`${baseUrl}/dogs/${id}`, {
+    return fetch(`${baseUrl}/dogs/${id}`, {
       method: "DELETE",
     })
       .then((data) => data.json())

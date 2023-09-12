@@ -11,5 +11,5 @@ export const dogPictures = {
   Chihuahua,
   Corgi,
   Cowardly,
-  Dalmation,
+  Dalmation
 };
