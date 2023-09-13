@@ -1,74 +1,144 @@
 {
   "dogs": [
     {
-      "name": "aaaa",
+      "name": "Vern",
+      "image": "/assets/corgi.png",
+      "description": "transmit withdrawal Southwest defect paradigms",
+      "isFavorite": true,
+      "id": 0
+    },
+    {
+      "name": "Emery",
       "image": "/assets/cowardly.png",
-      "description": "aaaaaaa",
+      "description": "consequuntur Connecticut Virginia Blues Accountability Antarctica teal",
       "isFavorite": false,
       "id": 1
     },
     {
-      "name": "",
-      "image": "/assets/blue-heeler.png",
-      "description": "",
+      "name": "Van",
+      "image": "/assets/dalmation.png",
+      "description": "Shirt regional female Practical Brand Buckinghamshire Tasty",
+      "isFavorite": false,
+      "id": 2
+    },
+    {
+      "name": "Ervin",
+      "image": "/assets/corgi.png",
+      "description": "Electric abbreviate Shoes application PCI Forward Convertible",
+      "isFavorite": false,
+      "id": 3
+    },
+    {
+      "name": "Beulah",
+      "image": "/assets/dalmation.png",
+      "description": "pine synergistic circuit holistic Accountability South for",
+      "isFavorite": false,
+      "id": 4
+    },
+    {
+      "name": "Matilda",
+      "image": "/assets/corgi.png",
+      "description": "initiatives architect Diesel Bicycle Planner dynamic overriding balaclava",
       "isFavorite": false,
       "id": 5
     },
     {
-      "name": "",
+      "name": "Jillian",
       "image": "/assets/blue-heeler.png",
-      "description": "",
-      "isFavorite": true,
+      "description": "Dollar an collaborative Tandem synthesize",
+      "isFavorite": false,
       "id": 6
     },
     {
-      "name": "aaa",
-      "image": "/assets/blue-heeler.png",
-      "description": "aaaa",
+      "name": "Korey",
+      "image": "/assets/chihuahua.avif",
+      "description": "lime kelvin Tricycle Southeast Wyoming",
       "isFavorite": false,
       "id": 7
     },
     {
-      "name": "",
-      "image": "/assets/blue-heeler.png",
-      "description": "",
+      "name": "Alyce",
+      "image": "/assets/cowardly.png",
+      "description": "Oriental green male yum Dong synthesize boastfully Ville",
       "isFavorite": false,
       "id": 8
     },
     {
-      "name": "aaa",
-      "image": "/assets/cowardly.png",
-      "description": "aaaa",
-      "isFavorite": false,
+      "name": "Zachariah",
+      "image": "/assets/boxer.png",
+      "description": "Pizza virtual Fresh quantifying who maximized moratorium",
+      "isFavorite": true,
+      "id": 9
+    },
+    {
+      "name": "Krystal",
+      "image": "/assets/boxer.png",
+      "description": "XML enable Fish Pataca gee Director SSL steel",
+      "isFavorite": true,
       "id": 10
     },
     {
-      "name": "bbbb",
+      "name": "Genevieve",
       "image": "/assets/dalmation.png",
-      "description": "bbbbb",
+      "description": "assent Games ex Internal male Card Gasoline 24/7",
       "isFavorite": false,
       "id": 11
     },
     {
-      "name": "aaaa",
-      "image": "/assets/blue-heeler.png",
-      "description": "aaaaaaa",
+      "name": "Kayli",
+      "image": "/assets/chihuahua.avif",
+      "description": "copy UDP Cotton Director Tandem",
       "isFavorite": false,
       "id": 12
     },
     {
-      "name": "aassaa",
-      "image": "/assets/boxer.jpeg",
-      "description": "axxccvv",
+      "name": "Anibal",
+      "image": "/assets/boxer.png",
+      "description": "Walks ROI radian bleach Incredible",
       "isFavorite": false,
       "id": 13
     },
     {
-      "name": "aaa",
-      "image": "/assets/blue-heeler.png",
-      "description": "aaasssa",
+      "name": "Melyna",
+      "image": "/assets/boxer.png",
+      "description": "Avon Ball until Ergonomic North Ford voluptatem circuit",
+      "isFavorite": false,
+      "id": 14
+    },
+    {
+      "name": "Kareem",
+      "image": "/assets/boxer.png",
+      "description": "Melyna Investment Movies Oxygen male South soluta green",
       "isFavorite": false,
       "id": 15
+    },
+    {
+      "name": "Savanna",
+      "image": "/assets/cowardly.png",
+      "description": "Shoal Course Franc Facilitator Congolese strategy Rap Awesome",
+      "isFavorite": false,
+      "id": 16
+    },
+    {
+      "name": "Mireya",
+      "image": "/assets/corgi.png",
+      "description": "Southwest Abshire male enhance impactful B2C Funk",
+      "isFavorite": false,
+      "id": 17
+    },
+    {
+      "name": "Della",
+      "image": "/assets/corgi.png",
+      "description": "Refined Shirt Georgia withdrawal Modern Future er Lakin",
+      "isFavorite": false,
+      "id": 18
+    },
+    {
+      "name": "Vance",
+      "image": "/assets/boxer.png",
+      "description": "Northwest VGA New newton Nuevo services standardization",
+      "isFavorite": true,
+      "id": 19
     }
   ]
 }

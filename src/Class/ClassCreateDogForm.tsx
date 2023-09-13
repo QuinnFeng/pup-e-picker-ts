@@ -1,7 +1,8 @@
-import { Component } from "react";
+import { Component, FormEvent} from "react";
 import { dogPictures } from "../dog-pictures";
 import { Requests } from "../api";
 import { Dog } from "../types";
+import toast from "react-hot-toast";
 
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
@@ -11,29 +12,39 @@ const initialState = {
   image: defaultSelectedImage,
 };
 
-export class ClassCreateDogForm extends Component {
-  state = { ...initialState };
+interface ClassCreateDogFormProps {
+  flipToggle: () => void;
+}
+
+export class ClassCreateDogForm extends Component<ClassCreateDogFormProps> {
+  state = { ...initialState, isLoading: false };
 
   reset() {
     this.setState({ ...initialState });
   }
 
-  formSubmitHandler() {
-    const dog: Dog = { ...this.state, isFavorite: false };
-    Requests.postDog(dog);
-    alert(`created dog ${this.state.name}`);
+  formSubmitHandler(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const { isLoading, ...dogInfo } = this.state;
+    this.setState({ isLoading: true });
+    const dog: Dog = { ...dogInfo, isFavorite: false };
+    Requests.postDog(dog)
+      .then(() => toast(`created dog ${this.state.name}`))
+      .finally(() => {
+        this.setState({ isLoading: false });
+      });
+    this.props.flipToggle();
     this.reset();
   }
 
   render() {
-    const { name, description, image } = this.state;
+    const { name, description, image, isLoading } = this.state;
     return (
       <form
         action=""
         id="create-dog-form"
         onSubmit={(e) => {
-          e.preventDefault();
-          this.formSubmitHandler();
+          this.formSubmitHandler(e);
         }}
       >
         <h4>Create a New Dog</h4>
@@ -45,7 +56,7 @@ export class ClassCreateDogForm extends Component {
           onChange={(e) => {
             this.setState({ name: e.target.value });
           }}
-          disabled={false}
+          disabled={isLoading}
         />
         <label htmlFor="description">Dog Description</label>
         <textarea
@@ -57,7 +68,7 @@ export class ClassCreateDogForm extends Component {
           onChange={(e) => {
             this.setState({ description: e.target.value });
           }}
-          disabled={false}
+          disabled={isLoading}
         />
         <label htmlFor="picture">Select an Image</label>
         <select
@@ -65,7 +76,7 @@ export class ClassCreateDogForm extends Component {
           onChange={(e) => {
             this.setState({ image: e.target.value });
           }}
-          disabled={false}
+          disabled={isLoading}
           value={image}
         >
           {Object.entries(dogPictures).map(([label, pictureValue]) => {
@@ -76,7 +87,7 @@ export class ClassCreateDogForm extends Component {
             );
           })}
         </select>
-        <input type="submit" value="submit" disabled={false} />
+        <input type="submit" value="submit" disabled={isLoading} />
       </form>
     );
   }

@@ -5,8 +5,7 @@ export const baseUrl = "http://localhost:3000";
 export const Requests = {
   // should return a promise with all dogs in the database
   getAllDogs: () => {
-    return fetch(`${baseUrl}/dogs`)
-      .then((data) => data.json());
+    return fetch(`${baseUrl}/dogs`).then((data) => data.json());
   },
   // should create a dog in the database from a partial dog object
   // and return a promise with the result
@@ -17,18 +16,14 @@ export const Requests = {
         "Content-type": "application/json",
       },
       body: JSON.stringify({ name, image, description, isFavorite }),
-    })
-      .then((data) => data.json())
-      .then(console.log);
+    }).then((data) => data.json());
   },
 
   // should delete a dog from the database
   deleteDog: (id: number) => {
     return fetch(`${baseUrl}/dogs/${id}`, {
       method: "DELETE",
-    })
-      .then((data) => data.json())
-      .then(console.log);
+    }).then((data) => data.json());
   },
 
   updateDog: (id: number, updatedDog: Partial<Dog>) => {

@@ -5,12 +5,13 @@ import { Requests } from "../api";
 import { Dog } from "../types";
 
 interface ClassSectionProps {
+  index: null | number;
   setIndex: (index: number | null) => void;
+  toggle: boolean;
   children: ReactNode;
 }
 
 interface ClassSectionStates {
-  index: null | number;
   favoriteCounts: number;
   unfavoriteCounts: number;
 }
@@ -22,13 +23,26 @@ export class ClassSection extends Component<
   constructor(props: ClassSectionProps) {
     super(props);
     this.state = {
-      index: null,
       favoriteCounts: 0,
       unfavoriteCounts: 0,
     };
   }
 
   componentDidMount() {
+    this.setCounts();
+  }
+
+  // shouldComponentUpdate(nextProps: ClassSectionProps) {
+  //   return nextProps.toggle != this.props.toggle;
+  // }
+
+  componentDidUpdate(prevProps: ClassSectionProps) {
+    if (prevProps.toggle != this.props.toggle) {
+      this.setCounts();
+    }
+  }
+
+  setCounts() {
     Requests.getAllDogs()
       .then((dogsData: Array<Dog>) => {
         const favoriteCounts = dogsData.filter(
@@ -43,13 +57,13 @@ export class ClassSection extends Component<
   }
 
   buttonToggleHandler(index: number) {
-    const value = index === this.state.index ? null : index;
-    this.setState({ index: value });
+    const value = index === this.props.index ? null : index;
     this.props.setIndex(value);
   }
 
   render() {
-    const { index, favoriteCounts, unfavoriteCounts } = this.state;
+    const { index } = this.props;
+    const { favoriteCounts, unfavoriteCounts } = this.state;
     return (
       <section id="main-section">
         <div className="container-header">
@@ -62,7 +76,7 @@ export class ClassSection extends Component<
           <div className="selectors">
             {/* This should display the favorited count */}
             <div
-              className={`selector ${index == 0 ? "active" : ""}`}
+              className={`selector ${index === 0 ? "active" : ""}`}
               onClick={() => {
                 this.buttonToggleHandler(0);
               }}
@@ -72,7 +86,7 @@ export class ClassSection extends Component<
 
             {/* This should display the unfavorited count */}
             <div
-              className={`selector ${index == 1 ? "active" : ""}`}
+              className={`selector ${index === 1 ? "active" : ""}`}
               onClick={() => {
                 this.buttonToggleHandler(1);
               }}

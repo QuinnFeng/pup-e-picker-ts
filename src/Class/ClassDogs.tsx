@@ -1,6 +1,5 @@
 import { DogCard } from "../Shared/DogCard";
 import { Component } from "react";
-import { dogPictures } from "../dog-pictures";
 import { Dog } from "../types";
 import { Requests } from "../api";
 
@@ -9,6 +8,7 @@ interface ClassDogsState {
 }
 interface ClassDogsProps {
   filter: null | boolean;
+  flipToggle: () => void;
 }
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export class ClassDogs extends Component<ClassDogsProps, ClassDogsState> {
@@ -25,6 +25,13 @@ export class ClassDogs extends Component<ClassDogsProps, ClassDogsState> {
 
   fetchDogs = () => {
     Requests.getAllDogs()
+      .then((dogsData: Array<Dog>) => {
+        const filter = this.props.filter;
+        return dogsData.filter((dog: Dog) => {
+          if (filter === null) return dog;
+          return dog.isFavorite === filter;
+        });
+      })
       .then((data: Array<Dog>) => {
         this.setState({ dogs: data });
       })
@@ -43,7 +50,7 @@ export class ClassDogs extends Component<ClassDogsProps, ClassDogsState> {
   };
 
   render() {
-    const { dogs } = this.state;
+    const { flipToggle } = this.props;
     const filteredDogs = this.filterDogs();
     return (
       <>
@@ -53,16 +60,19 @@ export class ClassDogs extends Component<ClassDogsProps, ClassDogsState> {
             key={dog.id}
             onTrashIconClick={() => {
               Requests.deleteDog(dog.id!).then(() => this.fetchDogs());
+              flipToggle();
             }}
             onHeartClick={() => {
-              Requests.updateDog(dog.id!, { isFavorite: false }).then(() =>
-                this.fetchDogs()
-              );
+              Requests.updateDog(dog.id!, { isFavorite: false }).then(() => {
+                this.fetchDogs();
+                flipToggle();
+              });
             }}
             onEmptyHeartClick={() => {
-              Requests.updateDog(dog.id!, { isFavorite: true }).then(() =>
-                this.fetchDogs()
-              );
+              Requests.updateDog(dog.id!, { isFavorite: true }).then(() => {
+                this.fetchDogs();
+                flipToggle();
+              });
             }}
             isLoading={false}
           />

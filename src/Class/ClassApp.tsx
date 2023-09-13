@@ -3,19 +3,24 @@ import { ClassSection } from "./ClassSection";
 import { ClassDogs } from "./ClassDogs";
 import { ClassCreateDogForm } from "./ClassCreateDogForm";
 
-const filter = { "0": true, "1": false };
 export class ClassApp extends Component {
-  state = { index: null as number | null };
+  state = { index: null as number | null, toggle: false };
 
   setIndex = (index: null | number) => {
     this.setState({ index });
+  };
+
+  // update change to ClassSection result from interactions
+  // make in ClassCreateDogForm and ClassDogs
+  flipToggle = () => {
+    this.setState({ toggle: !this.state.toggle });
   };
 
   convertToBoolean = (input: null | number) =>
     input === null ? null : input === 0;
 
   render() {
-    const { index } = this.state;
+    const { index, toggle } = this.state;
     const isDisplayForm = index === 2;
     const filterValue: null | boolean = this.convertToBoolean(index);
     return (
@@ -23,11 +28,11 @@ export class ClassApp extends Component {
         <header>
           <h1>pup-e-picker (Class Version)</h1>
         </header>
-        <ClassSection setIndex={this.setIndex}>
+        <ClassSection index={index} setIndex={this.setIndex} toggle={toggle}>
           {isDisplayForm ? (
-            <ClassCreateDogForm />
+            <ClassCreateDogForm flipToggle={this.flipToggle} />
           ) : (
-            <ClassDogs filter={filterValue} />
+            <ClassDogs filter={filterValue} flipToggle={this.flipToggle} />
           )}
         </ClassSection>
 

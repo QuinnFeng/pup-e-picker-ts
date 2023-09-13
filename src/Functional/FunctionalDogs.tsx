@@ -1,92 +1,73 @@
 import { DogCard } from "../Shared/DogCard";
-import { dogPictures } from "../dog-pictures";
 
-// Right now these dogs are constant, but in reality we should be getting these from our server
-export const FunctionalDogs = () => {
+import { useState, useEffect } from "react";
+import { Dog } from "../types";
+import { Requests } from "../api";
+
+interface FunctionalDogsProps {
+  filter: null | boolean;
+  flipToggle: () => void;
+}
+
+const FunctionalDogs = ({ filter, flipToggle }: FunctionalDogsProps) => {
+  const [dogs, setDogs] = useState<Array<Dog>>([]);
+
+  const fetchDogs = () => {
+    Requests.getAllDogs()
+      .then((dogsData: Array<Dog>) => {
+        return dogsData.filter((dog: Dog) => {
+          if (filter === null) return dog;
+          return dog.isFavorite === filter;
+        });
+      })
+      .then((data: Array<Dog>) => {
+        setDogs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchDogs();
+  }, [filter]);
+
+  const filterDogs = () => {
+    return dogs.filter((dog: Dog) => {
+      if (filter === null) return dog;
+      return dog.isFavorite === filter;
+    });
+  };
+
   return (
-    //  the "<> </>"" are called react fragments, it's like adding all the html inside
-    // without adding an actual html element
     <>
-      <DogCard
-        dog={{
-          id: 1,
-          image: dogPictures.BlueHeeler,
-          description: "Example Description",
-          isFavorite: false,
-          name: "Cute Blue Heeler",
-        }}
-        key={1}
-        onTrashIconClick={() => {
-          alert("clicked trash");
-        }}
-        onHeartClick={() => {
-          alert("clicked heart");
-        }}
-        onEmptyHeartClick={() => {
-          alert("clicked empty heart");
-        }}
-        isLoading={false}
-      />
-      <DogCard
-        dog={{
-          id: 2,
-          image: dogPictures.Boxer,
-          description: "Example Description",
-          isFavorite: false,
-          name: "Cute Boxer",
-        }}
-        key={2}
-        onTrashIconClick={() => {
-          alert("clicked trash");
-        }}
-        onHeartClick={() => {
-          alert("clicked heart");
-        }}
-        onEmptyHeartClick={() => {
-          alert("clicked empty heart");
-        }}
-        isLoading={false}
-      />
-      <DogCard
-        dog={{
-          id: 3,
-          image: dogPictures.Chihuahua,
-          description: "Example Description",
-          isFavorite: false,
-          name: "Cute Chihuahua",
-        }}
-        key={3}
-        onTrashIconClick={() => {
-          alert("clicked trash");
-        }}
-        onHeartClick={() => {
-          alert("clicked heart");
-        }}
-        onEmptyHeartClick={() => {
-          alert("clicked empty heart");
-        }}
-        isLoading={false}
-      />
-      <DogCard
-        dog={{
-          id: 4,
-          image: dogPictures.Corgi,
-          description: "Example Description",
-          isFavorite: false,
-          name: "Cute Corgi",
-        }}
-        key={4}
-        onTrashIconClick={() => {
-          alert("clicked trash");
-        }}
-        onHeartClick={() => {
-          alert("clicked heart");
-        }}
-        onEmptyHeartClick={() => {
-          alert("clicked empty heart");
-        }}
-        isLoading={false}
-      />
+      {filterDogs()?.map((dog: Dog) => (
+        <DogCard
+          dog={dog}
+          key={dog.id}
+          onTrashIconClick={() => {
+            Requests.deleteDog(dog.id!).then(() => {
+              fetchDogs();
+              flipToggle();
+            });
+          }}
+          onHeartClick={() => {
+            Requests.updateDog(dog.id!, { isFavorite: false }).then(() => {
+              fetchDogs();
+              flipToggle();
+            });
+          }}
+          onEmptyHeartClick={() => {
+            Requests.updateDog(dog.id!, { isFavorite: true }).then(() => {
+              fetchDogs();
+              flipToggle();
+            });
+          }}
+          isLoading={false}
+        />
+      ))}
     </>
   );
 };
+
+export default FunctionalDogs;
