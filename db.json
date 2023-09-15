@@ -1,144 +1,130 @@
 {
   "dogs": [
     {
-      "name": "Vern",
-      "image": "/assets/corgi.png",
-      "description": "transmit withdrawal Southwest defect paradigms",
+      "name": "Jared",
+      "image": "/assets/chihuahua.avif",
+      "description": "Cotton Lead enhance Generic phew",
       "isFavorite": true,
       "id": 0
     },
     {
-      "name": "Emery",
-      "image": "/assets/cowardly.png",
-      "description": "consequuntur Connecticut Virginia Blues Accountability Antarctica teal",
-      "isFavorite": false,
-      "id": 1
-    },
-    {
-      "name": "Van",
-      "image": "/assets/dalmation.png",
-      "description": "Shirt regional female Practical Brand Buckinghamshire Tasty",
-      "isFavorite": false,
-      "id": 2
-    },
-    {
-      "name": "Ervin",
+      "name": "Kale",
       "image": "/assets/corgi.png",
-      "description": "Electric abbreviate Shoes application PCI Forward Convertible",
-      "isFavorite": false,
-      "id": 3
-    },
-    {
-      "name": "Beulah",
-      "image": "/assets/dalmation.png",
-      "description": "pine synergistic circuit holistic Accountability South for",
-      "isFavorite": false,
-      "id": 4
-    },
-    {
-      "name": "Matilda",
-      "image": "/assets/corgi.png",
-      "description": "initiatives architect Diesel Bicycle Planner dynamic overriding balaclava",
-      "isFavorite": false,
+      "description": "North East Gasoline Pizza collaboration male services",
+      "isFavorite": true,
       "id": 5
     },
     {
-      "name": "Jillian",
-      "image": "/assets/blue-heeler.png",
-      "description": "Dollar an collaborative Tandem synthesize",
-      "isFavorite": false,
+      "name": "Miguel",
+      "image": "/assets/corgi.png",
+      "description": "female Van Northwest sticky red Direct Wooden revolutionize",
+      "isFavorite": true,
       "id": 6
     },
     {
-      "name": "Korey",
-      "image": "/assets/chihuahua.avif",
-      "description": "lime kelvin Tricycle Southeast Wyoming",
-      "isFavorite": false,
+      "name": "Dallin",
+      "image": "/assets/blue-heeler.png",
+      "description": "Trans violet Cambridgeshire Pizza Technician",
+      "isFavorite": true,
       "id": 7
     },
     {
-      "name": "Alyce",
+      "name": "Ursula",
       "image": "/assets/cowardly.png",
-      "description": "Oriental green male yum Dong synthesize boastfully Ville",
-      "isFavorite": false,
+      "description": "turquoise Towels transmitter black gambol",
+      "isFavorite": true,
       "id": 8
     },
     {
-      "name": "Zachariah",
-      "image": "/assets/boxer.png",
-      "description": "Pizza virtual Fresh quantifying who maximized moratorium",
+      "name": "Alice",
+      "image": "/assets/dalmation.png",
+      "description": "Kia Cambridgeshire Electric Americium Loan",
       "isFavorite": true,
       "id": 9
     },
     {
-      "name": "Krystal",
-      "image": "/assets/boxer.png",
-      "description": "XML enable Fish Pataca gee Director SSL steel",
-      "isFavorite": true,
-      "id": 10
-    },
-    {
-      "name": "Genevieve",
-      "image": "/assets/dalmation.png",
-      "description": "assent Games ex Internal male Card Gasoline 24/7",
-      "isFavorite": false,
-      "id": 11
-    },
-    {
-      "name": "Kayli",
+      "name": "Robert",
       "image": "/assets/chihuahua.avif",
-      "description": "copy UDP Cotton Director Tandem",
-      "isFavorite": false,
+      "description": "giraffe Land male past Radium Lamborghini program",
+      "isFavorite": true,
       "id": 12
     },
     {
-      "name": "Anibal",
-      "image": "/assets/boxer.png",
-      "description": "Walks ROI radian bleach Incredible",
-      "isFavorite": false,
+      "name": "Uriah",
+      "image": "/assets/dalmation.png",
+      "description": "Heights Officer International recusandae Pizza East Diesel Avon",
+      "isFavorite": true,
       "id": 13
     },
     {
-      "name": "Melyna",
-      "image": "/assets/boxer.png",
-      "description": "Avon Ball until Ergonomic North Ford voluptatem circuit",
-      "isFavorite": false,
+      "name": "Eric",
+      "image": "/assets/chihuahua.avif",
+      "description": "farad copying Southwest Industrial navigate Soap interactive katal",
+      "isFavorite": true,
       "id": 14
     },
     {
-      "name": "Kareem",
-      "image": "/assets/boxer.png",
-      "description": "Melyna Investment Movies Oxygen male South soluta green",
+      "name": "Rosetta",
+      "image": "/assets/cowardly.png",
+      "description": "yet bow connecting exactly Maryland",
       "isFavorite": false,
       "id": 15
     },
     {
-      "name": "Savanna",
-      "image": "/assets/cowardly.png",
-      "description": "Shoal Course Franc Facilitator Congolese strategy Rap Awesome",
-      "isFavorite": false,
+      "name": "Madison",
+      "image": "/assets/boxer.png",
+      "description": "Architect scarcely Northeast Investment cyan wherever Director copying",
+      "isFavorite": true,
       "id": 16
     },
     {
-      "name": "Mireya",
-      "image": "/assets/corgi.png",
-      "description": "Southwest Abshire male enhance impactful B2C Funk",
-      "isFavorite": false,
+      "name": "Ray",
+      "image": "/assets/boxer.png",
+      "description": "CSS Connecticut Northeast face AGP Tactics Argon",
+      "isFavorite": true,
       "id": 17
     },
     {
-      "name": "Della",
-      "image": "/assets/corgi.png",
-      "description": "Refined Shirt Georgia withdrawal Modern Future er Lakin",
+      "name": "Cathy",
+      "image": "/assets/cowardly.png",
+      "description": "static Identity ick neural Minivan withdrawal haptic",
       "isFavorite": false,
-      "id": 18
+      "id": 19
     },
     {
-      "name": "Vance",
-      "image": "/assets/boxer.png",
-      "description": "Northwest VGA New newton Nuevo services standardization",
-      "isFavorite": true,
-      "id": 19
+      "name": "saaas",
+      "image": "/assets/blue-heeler.png",
+      "description": "1111111",
+      "isFavorite": false,
+      "id": 20
+    },
+    {
+      "name": "aaa11",
+      "image": "/assets/blue-heeler.png",
+      "description": "sddaas",
+      "isFavorite": false,
+      "id": 22
+    },
+    {
+      "name": "aaaaa",
+      "image": "/assets/blue-heeler.png",
+      "description": "aaaa111221",
+      "isFavorite": false,
+      "id": 23
+    },
+    {
+      "name": "11111",
+      "image": "/assets/blue-heeler.png",
+      "description": "2221112e3",
+      "isFavorite": false,
+      "id": 24
+    },
+    {
+      "name": "11112111",
+      "image": "/assets/blue-heeler.png",
+      "description": "111112",
+      "isFavorite": false,
+      "id": 25
     }
   ]
 }

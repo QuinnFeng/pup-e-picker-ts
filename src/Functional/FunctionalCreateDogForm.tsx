@@ -8,10 +8,10 @@ import toast from "react-hot-toast";
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
 interface FunctionalCreateDogFormProps {
-  flipToggle: () => void;
+  refetchDogs: () => void;
 }
 export const FunctionalCreateDogForm = ({
-  flipToggle,
+  refetchDogs,
 }: FunctionalCreateDogFormProps) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -29,11 +29,11 @@ export const FunctionalCreateDogForm = ({
     const dog: Dog = { name, description, image, isFavorite: false };
     setIsLoading(true);
     Requests.postDog(dog)
-      .then(() => toast(`created dog ${name}`))
+      .then(() => toast.success(`created dog ${name}`))
       .finally(() => {
         setIsLoading(false);
       });
-    flipToggle();
+    refetchDogs();
     reset();
   };
 

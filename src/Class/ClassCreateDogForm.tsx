@@ -13,7 +13,7 @@ const initialState = {
 };
 
 interface ClassCreateDogFormProps {
-  flipToggle: () => void;
+  refetchDogs: () => void;
 }
 
 export class ClassCreateDogForm extends Component<ClassCreateDogFormProps> {
@@ -29,11 +29,11 @@ export class ClassCreateDogForm extends Component<ClassCreateDogFormProps> {
     this.setState({ isLoading: true });
     const dog: Dog = { ...dogInfo, isFavorite: false };
     Requests.postDog(dog)
-      .then(() => toast(`created dog ${this.state.name}`))
+      .then(() => toast.success(`created dog ${this.state.name}`))
       .finally(() => {
         this.setState({ isLoading: false });
       });
-    this.props.flipToggle();
+    this.props.refetchDogs();
     this.reset();
   }
 

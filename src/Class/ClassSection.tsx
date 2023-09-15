@@ -1,69 +1,27 @@
 // you can use `ReactNode` to add a type to the children prop
 import { Component, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Requests } from "../api";
-import { Dog } from "../types";
+import { ActiveTab} from "../types";
 
 interface ClassSectionProps {
-  index: null | number;
-  setIndex: (index: number | null) => void;
-  toggle: boolean;
+  activeTab: ActiveTab;
+  setActiveTab: (activeTab: ActiveTab) => void;
+  favoriteCounts: number;
+  unfavoriteCounts: number;
   children: ReactNode;
 }
 
-interface ClassSectionStates {
-  favoriteCounts: number;
-  unfavoriteCounts: number;
-}
-
 export class ClassSection extends Component<
-  ClassSectionProps,
-  ClassSectionStates
+  ClassSectionProps
 > {
-  constructor(props: ClassSectionProps) {
-    super(props);
-    this.state = {
-      favoriteCounts: 0,
-      unfavoriteCounts: 0,
-    };
-  }
 
-  componentDidMount() {
-    this.setCounts();
-  }
-
-  // shouldComponentUpdate(nextProps: ClassSectionProps) {
-  //   return nextProps.toggle != this.props.toggle;
-  // }
-
-  componentDidUpdate(prevProps: ClassSectionProps) {
-    if (prevProps.toggle != this.props.toggle) {
-      this.setCounts();
-    }
-  }
-
-  setCounts() {
-    Requests.getAllDogs()
-      .then((dogsData: Array<Dog>) => {
-        const favoriteCounts = dogsData.filter(
-          (dog: Dog) => dog.isFavorite === true
-        ).length;
-        const unfavoriteCounts = dogsData.length - favoriteCounts;
-        this.setState({ favoriteCounts, unfavoriteCounts });
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }
-
-  buttonToggleHandler(index: number) {
-    const value = index === this.props.index ? null : index;
-    this.props.setIndex(value);
+  buttonToggleHandler(activeTab:ActiveTab) {
+    const value = activeTab === this.props.activeTab ? "all-dogs" : activeTab;
+    this.props.setActiveTab(value);
   }
 
   render() {
-    const { index } = this.props;
-    const { favoriteCounts, unfavoriteCounts } = this.state;
+    const { activeTab, favoriteCounts, unfavoriteCounts } = this.props;
     return (
       <section id="main-section">
         <div className="container-header">
@@ -76,9 +34,9 @@ export class ClassSection extends Component<
           <div className="selectors">
             {/* This should display the favorited count */}
             <div
-              className={`selector ${index === 0 ? "active" : ""}`}
+              className={`selector ${activeTab=="favorite"? "active" : ""}`}
               onClick={() => {
-                this.buttonToggleHandler(0);
+                this.buttonToggleHandler("favorite");
               }}
             >
               favorited ( {favoriteCounts} )
@@ -86,17 +44,17 @@ export class ClassSection extends Component<
 
             {/* This should display the unfavorited count */}
             <div
-              className={`selector ${index === 1 ? "active" : ""}`}
+              className={`selector ${activeTab=="unfavorite"? "active" : ""}`}
               onClick={() => {
-                this.buttonToggleHandler(1);
+                this.buttonToggleHandler("unfavorite");
               }}
             >
               unfavorited ( {unfavoriteCounts} )
             </div>
             <div
-              className={`selector ${index == 2 ? "active" : ""}`}
+              className={`selector ${activeTab=="create-dog-form"? "active" : ""}`}
               onClick={() => {
-                this.buttonToggleHandler(2);
+                this.buttonToggleHandler("create-dog-form");
               }}
             >
               create dog

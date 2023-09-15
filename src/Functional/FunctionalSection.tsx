@@ -1,47 +1,26 @@
 // you can use this type for react children if you so choose
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Requests } from "../api";
-import { Dog } from "../types";
+import { ActiveTab } from "../types";
 
 interface FunctionalSectionProps {
-  index: null | number;
-  setIndex: (index: number | null) => void;
-  toggle: boolean;
+  activeTab: ActiveTab;
+  setActiveTab: (activeTab: ActiveTab) => void;
+  favoriteCounts: number;
+  unfavoriteCounts: number;
   children: ReactNode;
 }
 
 export const FunctionalSection = ({
-  index,
-  setIndex,
-  toggle,
+  activeTab,
+  setActiveTab,
+  favoriteCounts,
+  unfavoriteCounts,
   children,
 }: FunctionalSectionProps) => {
-  const [fC, setFC] = useState(0);
-  const [uFC, setUFC] = useState(0);
-
-  useEffect(() => {
-    setCounts();
-  }, [toggle]);
-
-  const setCounts = () => {
-    Requests.getAllDogs()
-      .then((dogsData: Array<Dog>) => {
-        const favoriteCounts = dogsData.filter(
-          (dog: Dog) => dog.isFavorite === true
-        ).length;
-        const unfavoriteCounts = dogsData.length - favoriteCounts;
-        setFC(favoriteCounts);
-        setUFC(unfavoriteCounts);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  const buttonToggleHandler = (mark: number) => {
-    const value = mark === index ? null : mark;
-    setIndex(value);
+  const buttonToggleHandler = (aT: ActiveTab) => {
+    const value = aT === activeTab ? "all-dogs" : aT;
+    setActiveTab(value);
   };
 
   return (
@@ -54,27 +33,29 @@ export const FunctionalSection = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${index == 0 ? "active" : ""}`}
+            className={`selector ${activeTab == "favorite" ? "active" : ""}`}
             onClick={() => {
-              buttonToggleHandler(0);
+              buttonToggleHandler("favorite");
             }}
           >
-            favorited ( {fC} )
+            favorited ( {favoriteCounts} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${index == 1 ? "active" : ""}`}
+            className={`selector ${activeTab == "unfavorite" ? "active" : ""}`}
             onClick={() => {
-              buttonToggleHandler(1);
+              buttonToggleHandler("unfavorite");
             }}
           >
-            unfavorited ( {uFC} )
+            unfavorited ( {unfavoriteCounts} )
           </div>
           <div
-            className={`selector ${index == 2 ? "active" : ""}`}
+            className={`selector ${
+              activeTab == "create-dog-form" ? "active" : ""
+            }`}
             onClick={() => {
-              buttonToggleHandler(2);
+              buttonToggleHandler("create-dog-form");
             }}
           >
             create dog

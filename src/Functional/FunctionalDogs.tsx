@@ -1,66 +1,32 @@
 import { DogCard } from "../Shared/DogCard";
-
-import { useState, useEffect } from "react";
 import { Dog } from "../types";
 import { Requests } from "../api";
 
 interface FunctionalDogsProps {
-  filter: null | boolean;
-  flipToggle: () => void;
+  dogs: Array<Dog>;
+  refetchDogs: () => void;
 }
 
-const FunctionalDogs = ({ filter, flipToggle }: FunctionalDogsProps) => {
-  const [dogs, setDogs] = useState<Array<Dog>>([]);
-
-  const fetchDogs = () => {
-    Requests.getAllDogs()
-      .then((dogsData: Array<Dog>) => {
-        return dogsData.filter((dog: Dog) => {
-          if (filter === null) return dog;
-          return dog.isFavorite === filter;
-        });
-      })
-      .then((data: Array<Dog>) => {
-        setDogs(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  useEffect(() => {
-    fetchDogs();
-  }, [filter]);
-
-  const filterDogs = () => {
-    return dogs.filter((dog: Dog) => {
-      if (filter === null) return dog;
-      return dog.isFavorite === filter;
-    });
-  };
-
+const FunctionalDogs = ({ dogs, refetchDogs }: FunctionalDogsProps) => {
   return (
     <>
-      {filterDogs()?.map((dog: Dog) => (
+      {dogs?.map((dog: Dog) => (
         <DogCard
           dog={dog}
           key={dog.id}
           onTrashIconClick={() => {
             Requests.deleteDog(dog.id!).then(() => {
-              fetchDogs();
-              flipToggle();
+              refetchDogs();
             });
           }}
           onHeartClick={() => {
             Requests.updateDog(dog.id!, { isFavorite: false }).then(() => {
-              fetchDogs();
-              flipToggle();
+              refetchDogs();
             });
           }}
           onEmptyHeartClick={() => {
             Requests.updateDog(dog.id!, { isFavorite: true }).then(() => {
-              fetchDogs();
-              flipToggle();
+              refetchDogs();
             });
           }}
           isLoading={false}
