@@ -5,9 +5,16 @@ import { Requests } from "../api";
 interface FunctionalDogsProps {
   dogs: Array<Dog>;
   refetchDogs: () => void;
+  setIsLoading: (isLoading: boolean) => void;
+  isLoading: boolean;
 }
 
-const FunctionalDogs = ({ dogs, refetchDogs }: FunctionalDogsProps) => {
+const FunctionalDogs = ({
+  dogs,
+  refetchDogs,
+  setIsLoading,
+  isLoading,
+}: FunctionalDogsProps) => {
   return (
     <>
       {dogs?.map((dog: Dog) => (
@@ -15,21 +22,30 @@ const FunctionalDogs = ({ dogs, refetchDogs }: FunctionalDogsProps) => {
           dog={dog}
           key={dog.id}
           onTrashIconClick={() => {
-            Requests.deleteDog(dog.id!).then(() => {
-              refetchDogs();
-            });
+            setIsLoading(true);
+            Requests.deleteDog(dog.id!)
+              .then(() => {
+                refetchDogs();
+              })
+              .finally(() => setIsLoading(false));
           }}
           onHeartClick={() => {
-            Requests.updateDog(dog.id!, { isFavorite: false }).then(() => {
-              refetchDogs();
-            });
+            setIsLoading(true);
+            Requests.updateDog(dog.id!, { isFavorite: false })
+              .then(() => {
+                refetchDogs();
+              })
+              .finally(() => setIsLoading(false));
           }}
           onEmptyHeartClick={() => {
-            Requests.updateDog(dog.id!, { isFavorite: true }).then(() => {
-              refetchDogs();
-            });
+            setIsLoading(true);
+            Requests.updateDog(dog.id!, { isFavorite: true })
+              .then(() => {
+                refetchDogs();
+              })
+              .finally(() => setIsLoading(false));
           }}
-          isLoading={false}
+          isLoading={isLoading}
         />
       ))}
     </>

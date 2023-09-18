@@ -6,11 +6,13 @@ import { Requests } from "../api";
 interface ClassDogsProps {
   dogs: Array<Dog>;
   refetchDogs: () => void;
+  setIsLoading: (isLoading: boolean) => void;
+  isLoading: boolean;
 }
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export class ClassDogs extends Component<ClassDogsProps> {
   render() {
-    const { dogs, refetchDogs } = this.props;
+    const { dogs, refetchDogs, setIsLoading, isLoading } = this.props;
     return (
       <>
         {dogs?.map((dog: Dog) => (
@@ -18,19 +20,28 @@ export class ClassDogs extends Component<ClassDogsProps> {
             dog={dog}
             key={dog.id}
             onTrashIconClick={() => {
-              Requests.deleteDog(dog.id!).then(() => refetchDogs());
+              setIsLoading(true);
+              Requests.deleteDog(dog.id!)
+                .then(() => refetchDogs())
+                .finally(() => setIsLoading(false));
             }}
             onHeartClick={() => {
-              Requests.updateDog(dog.id!, { isFavorite: false }).then(() => {
-                refetchDogs();
-              });
+              setIsLoading(true);
+              Requests.updateDog(dog.id!, { isFavorite: false })
+                .then(() => {
+                  refetchDogs();
+                })
+                .finally(() => setIsLoading(false));
             }}
             onEmptyHeartClick={() => {
-              Requests.updateDog(dog.id!, { isFavorite: true }).then(() => {
-                refetchDogs();
-              });
+              setIsLoading(true);
+              Requests.updateDog(dog.id!, { isFavorite: true })
+                .then(() => {
+                  refetchDogs();
+                })
+                .finally(() => setIsLoading(false));
             }}
-            isLoading={false}
+            isLoading={isLoading}
           />
         ))}
       </>

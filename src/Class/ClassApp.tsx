@@ -9,8 +9,7 @@ export class ClassApp extends Component {
   state = {
     activeTab: "all-dogs" as ActiveTab,
     dogs: [] as Array<Dog>,
-    favoriteCounts: 0,
-    unfavoriteCounts: 0,
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -19,16 +18,14 @@ export class ClassApp extends Component {
 
   fetchDogs = () => {
     Requests.getAllDogs()
-      .then((dogs: Array<Dog>) => {
-        const favoriteCounts = dogs.filter(
-          (dog) => dog.isFavorite === true
-        ).length;
-        const unfavoriteCounts = dogs.length - favoriteCounts;
-        this.setState({ dogs, favoriteCounts, unfavoriteCounts });
-      })
+      .then((dogs: Array<Dog>) => this.setState({ dogs }))
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+  };
+
+  setIsLoading = (isLoading: boolean) => {
+    this.setState({ isLoading });
   };
 
   setActiveTab = (activeTab: string) => {
@@ -36,17 +33,21 @@ export class ClassApp extends Component {
   };
 
   filterDogs = (activeTab: ActiveTab, dogs: Array<Dog>) => {
+    if (activeTab === "create-dog-form" || activeTab === "all-dogs")
+      return dogs;
     return dogs.filter((dog: Dog) => {
-      if (activeTab === "create-dog-form" || activeTab === "all-dogs")
-        return dog;
-      return dog.isFavorite == (activeTab === "favorite") ? true : false;
+      return dog.isFavorite == (activeTab === "favorite");
     });
   };
 
   render() {
-    const { activeTab, dogs, favoriteCounts, unfavoriteCounts } = this.state;
+    const { activeTab, dogs, isLoading } = this.state;
     const isDisplayForm = activeTab === "create-dog-form";
     const filteredDogs = this.filterDogs(activeTab, dogs);
+    const favoriteCounts = dogs.filter(
+      (dog: Dog) => dog.isFavorite === true
+    ).length;
+    const unfavoriteCounts = dogs.length - favoriteCounts;
 
     return (
       <div className="App" style={{ backgroundColor: "goldenrod" }}>
@@ -60,9 +61,18 @@ export class ClassApp extends Component {
           setActiveTab={this.setActiveTab}
         >
           {isDisplayForm ? (
-            <ClassCreateDogForm refetchDogs={this.fetchDogs} />
+            <ClassCreateDogForm
+              refetchDogs={this.fetchDogs}
+              setIsLoading={this.setIsLoading}
+              isLoading={isLoading}
+            />
           ) : (
-            <ClassDogs dogs={filteredDogs} refetchDogs={this.fetchDogs} />
+            <ClassDogs
+              dogs={filteredDogs}
+              refetchDogs={this.fetchDogs}
+              setIsLoading={this.setIsLoading}
+              isLoading={isLoading}
+            />
           )}
         </ClassSection>
 

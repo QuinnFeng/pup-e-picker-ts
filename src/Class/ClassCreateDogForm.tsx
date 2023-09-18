@@ -1,4 +1,4 @@
-import { Component, FormEvent} from "react";
+import { Component, FormEvent } from "react";
 import { dogPictures } from "../dog-pictures";
 import { Requests } from "../api";
 import { Dog } from "../types";
@@ -14,10 +14,12 @@ const initialState = {
 
 interface ClassCreateDogFormProps {
   refetchDogs: () => void;
+  setIsLoading: (isLoading: boolean) => void;
+  isLoading: boolean;
 }
 
 export class ClassCreateDogForm extends Component<ClassCreateDogFormProps> {
-  state = { ...initialState, isLoading: false };
+  state = { ...initialState };
 
   reset() {
     this.setState({ ...initialState });
@@ -25,20 +27,22 @@ export class ClassCreateDogForm extends Component<ClassCreateDogFormProps> {
 
   formSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const { isLoading, ...dogInfo } = this.state;
-    this.setState({ isLoading: true });
+    const { ...dogInfo } = this.state;
+    const { refetchDogs, setIsLoading } = this.props;
     const dog: Dog = { ...dogInfo, isFavorite: false };
+    setIsLoading(true);
     Requests.postDog(dog)
-      .then(() => toast.success(`created dog ${this.state.name}`))
+      .then(() => toast.success(`created dog ${dogInfo.name}`))
       .finally(() => {
-        this.setState({ isLoading: false });
+        setIsLoading(false);
       });
-    this.props.refetchDogs();
+    refetchDogs();
     this.reset();
   }
 
   render() {
-    const { name, description, image, isLoading } = this.state;
+    const { name, description, image } = this.state;
+    const { isLoading } = this.props;
     return (
       <form
         action=""

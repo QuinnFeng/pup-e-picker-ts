@@ -1,130 +1,116 @@
 {
   "dogs": [
     {
-      "name": "Jared",
-      "image": "/assets/chihuahua.avif",
-      "description": "Cotton Lead enhance Generic phew",
-      "isFavorite": true,
+      "name": "Pinkie",
+      "image": "/assets/dalmation.png",
+      "description": "Chips Clothing Bespoke Investor becquerel Fitness Montana Eritrea",
+      "isFavorite": false,
       "id": 0
     },
     {
-      "name": "Kale",
-      "image": "/assets/corgi.png",
-      "description": "North East Gasoline Pizza collaboration male services",
+      "name": "Amiya",
+      "image": "/assets/boxer.png",
+      "description": "optical abound proactive Kshlerin Celsius Diesel Automotive calculating",
       "isFavorite": true,
+      "id": 3
+    },
+    {
+      "name": "Dale",
+      "image": "/assets/chihuahua.avif",
+      "description": "connecting functionalities Village male Hatchback portals Dalasi Metrics",
+      "isFavorite": false,
       "id": 5
     },
     {
-      "name": "Miguel",
-      "image": "/assets/corgi.png",
-      "description": "female Van Northwest sticky red Direct Wooden revolutionize",
-      "isFavorite": true,
+      "name": "Cydney",
+      "image": "/assets/dalmation.png",
+      "description": "SQL female Oklahoma onto Dynamic Convertible impeccable Malaysian",
+      "isFavorite": false,
       "id": 6
     },
     {
-      "name": "Dallin",
-      "image": "/assets/blue-heeler.png",
-      "description": "Trans violet Cambridgeshire Pizza Technician",
-      "isFavorite": true,
+      "name": "Justice",
+      "image": "/assets/chihuahua.avif",
+      "description": "Northeast Shilling Nakfa Crew Research plum parsing carelessly",
+      "isFavorite": false,
       "id": 7
     },
     {
-      "name": "Ursula",
-      "image": "/assets/cowardly.png",
-      "description": "turquoise Towels transmitter black gambol",
-      "isFavorite": true,
-      "id": 8
-    },
-    {
-      "name": "Alice",
+      "name": "Jamil",
       "image": "/assets/dalmation.png",
-      "description": "Kia Cambridgeshire Electric Americium Loan",
-      "isFavorite": true,
-      "id": 9
+      "description": "Bespoke superficial mangle programming East Creative after",
+      "isFavorite": false,
+      "id": 10
     },
     {
-      "name": "Robert",
-      "image": "/assets/chihuahua.avif",
-      "description": "giraffe Land male past Radium Lamborghini program",
-      "isFavorite": true,
+      "name": "Stacey",
+      "image": "/assets/dalmation.png",
+      "description": "Hybrid white Diesel portals payment Mission benchmark",
+      "isFavorite": false,
       "id": 12
     },
     {
-      "name": "Uriah",
-      "image": "/assets/dalmation.png",
-      "description": "Heights Officer International recusandae Pizza East Diesel Avon",
-      "isFavorite": true,
+      "name": "Vilma",
+      "image": "/assets/blue-heeler.png",
+      "description": "strategize Expanded circa Dietrich North",
+      "isFavorite": false,
       "id": 13
     },
     {
-      "name": "Eric",
-      "image": "/assets/chihuahua.avif",
-      "description": "farad copying Southwest Industrial navigate Soap interactive katal",
-      "isFavorite": true,
+      "name": "Tom",
+      "image": "/assets/dalmation.png",
+      "description": "synthesizing Transexual midst Health female",
+      "isFavorite": false,
       "id": 14
     },
     {
-      "name": "Rosetta",
-      "image": "/assets/cowardly.png",
-      "description": "yet bow connecting exactly Maryland",
+      "name": "Carleton",
+      "image": "/assets/boxer.png",
+      "description": "Synchronised Manager Soul Keyboard Rolls Northeast bean",
       "isFavorite": false,
       "id": 15
     },
     {
-      "name": "Madison",
-      "image": "/assets/boxer.png",
-      "description": "Architect scarcely Northeast Investment cyan wherever Director copying",
+      "name": "Brooklyn",
+      "image": "/assets/blue-heeler.png",
+      "description": "West API applications Cyclocross invoice Paradigm cyan",
       "isFavorite": true,
       "id": 16
     },
     {
-      "name": "Ray",
-      "image": "/assets/boxer.png",
-      "description": "CSS Connecticut Northeast face AGP Tactics Argon",
-      "isFavorite": true,
+      "name": "Darian",
+      "image": "/assets/blue-heeler.png",
+      "description": "Organic steradian Borders lumen Bonaire,",
+      "isFavorite": false,
       "id": 17
     },
     {
-      "name": "Cathy",
-      "image": "/assets/cowardly.png",
-      "description": "static Identity ick neural Minivan withdrawal haptic",
-      "isFavorite": false,
+      "name": "Edythe",
+      "image": "/assets/boxer.png",
+      "description": "Tricycle afterwards climb Tesla Investment Director radian",
+      "isFavorite": true,
       "id": 19
-    },
-    {
-      "name": "saaas",
-      "image": "/assets/blue-heeler.png",
-      "description": "1111111",
-      "isFavorite": false,
-      "id": 20
-    },
-    {
-      "name": "aaa11",
-      "image": "/assets/blue-heeler.png",
-      "description": "sddaas",
-      "isFavorite": false,
-      "id": 22
     },
     {
       "name": "aaaaa",
       "image": "/assets/blue-heeler.png",
-      "description": "aaaa111221",
+      "description": "sssssaa",
       "isFavorite": false,
-      "id": 23
+      "id": 20
     },
     {
-      "name": "11111",
+      "name": "aaaaa",
       "image": "/assets/blue-heeler.png",
-      "description": "2221112e3",
+      "description": "aaaaaaa",
       "isFavorite": false,
-      "id": 24
+      "id": 21
     },
     {
-      "name": "11112111",
+      "name": "jdk",
       "image": "/assets/blue-heeler.png",
-      "description": "111112",
+      "description": "nre",
       "isFavorite": false,
-      "id": 25
+      "id": 22
     }
   ]
 }

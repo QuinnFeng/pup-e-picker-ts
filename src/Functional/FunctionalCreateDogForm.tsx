@@ -9,14 +9,17 @@ const defaultSelectedImage = dogPictures.BlueHeeler;
 
 interface FunctionalCreateDogFormProps {
   refetchDogs: () => void;
+  setIsLoading: (isLoading: boolean) => void;
+  isLoading: boolean;
 }
 export const FunctionalCreateDogForm = ({
   refetchDogs,
+  setIsLoading,
+  isLoading,
 }: FunctionalCreateDogFormProps) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(defaultSelectedImage);
-  const [isLoading, setIsLoading] = useState(false);
 
   const reset = () => {
     setName("");
